@@ -18,7 +18,6 @@ class VK
     const METHOD_URL = 'https://api.vk.com/method/';
     const ERROR_CAPTCHA = 14;
 
-
     public $secret_key = null;
     public $scope = array();
     public $client_id = null;
