@@ -215,7 +215,7 @@ class VK{
                 $attachments[] = $photo['id'];
             }
         }
-        d
+        
         return $attachments;
 
     }
