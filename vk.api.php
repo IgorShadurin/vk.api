@@ -3,7 +3,9 @@
  * Class Vk
  * author: Dmitriy Nyashkin
  */
-class Vk{
+ 
+namespace VK;
+class VK{
 
     const API_VERSION = '5.24';
 
