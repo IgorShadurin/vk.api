@@ -106,12 +106,9 @@ class VK{
     }
 
     function call($url = ''){
-
         if(function_exists('curl_init')) $json = $this->curl_post($url); else $json = file_get_contents($url);
-
-        $json = json_decode($json, true);
-
-        if(isset($json['response'])) return $json['response'];
+        $json = json_decode($json);
+        if(isset($json->response)) return $json->response;
 
         return $json;
     }
@@ -218,7 +215,7 @@ class VK{
                 $attachments[] = $photo['id'];
             }
         }
-        
+        d
         return $attachments;
 
     }
