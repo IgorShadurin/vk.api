@@ -6,7 +6,7 @@ vk.api
 
 ```
 include('vk.api.php');
-	$v = new Vk(['antigate_key' => '23t354y4556u356u356u356u']);
+$v = new Vk(['antigate_key' => '23t354y4556u356u356u356u']);
 ```
 
 Работа с API Вконтакте для StandAlone приложений на языке php.
