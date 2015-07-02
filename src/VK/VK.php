@@ -69,14 +69,17 @@ class VK
         $url = $this->http_build_query($method, $params);
 
         $result = $this->call($url);
-        if ($this->antigate && isset($result->error->error_code) && $result->error->error_code == self::ERROR_CAPTCHA) {
-            $fileData = $this->file_get_contents_curl($result->error->captcha_img);
-            $key = $this->antigate->recognize($fileData);
-            $vars['captcha_sid'] = $result->error->captcha_sid;
-            $vars['captcha_key'] = $key;
-            $params = http_build_query($vars);
-            $url = $this->http_build_query($method, $params);
-            $result = $this->call($url);
+        try {
+            if ($this->antigate && isset($result->error->error_code) && $result->error->error_code == self::ERROR_CAPTCHA) {
+                $fileData = $this->file_get_contents_curl($result->error->captcha_img);
+                $key = $this->antigate->recognize($fileData);
+                $vars['captcha_sid'] = $result->error->captcha_sid;
+                $vars['captcha_key'] = $key;
+                $params = http_build_query($vars);
+                $url = $this->http_build_query($method, $params);
+                $result = $this->call($url);
+            }
+        } catch (\Exception $e) {
         }
 
         return $result;
